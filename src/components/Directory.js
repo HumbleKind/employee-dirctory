@@ -1,5 +1,7 @@
 // QUESTION: by 'destructuring'? here, does that make it possible NOT to use extends "React.Component" in the class creation?
 import React, { Component } from "react";
+import Table from 'react-bootstrap/Table';
+
 // import API from "../utils/API";
 
 // QUESTION: is it best practice to use class instead of functional components?
@@ -42,13 +44,32 @@ class Directory extends Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <ul>
-                    {results.map(employee => (
-                        <li key={employee.id.value}>
-                            {employee.name.first} {employee.name.last}
-                        </li>
-                    ))}
-                </ul>
+                <div>
+                    {/* how do I use these props correctly? */}
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>DOB</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {results.map(employee => (
+                                // what's the bes 'key' to use, and why?
+                                <tr key={employee.id.value}>
+                                    <td>{employee.picture.thumbnail}</td>
+                                    <td>{employee.name.first} {employee.name.last}</td>
+                                    <td>{employee.phone}</td>
+                                    <td>{employee.email}</td>
+                                    <td>{employee.dob.date}</td>
+                                </tr>
+                            ))}                        
+                        </tbody>
+                    </Table>
+                </div>
             );
         }
     }
