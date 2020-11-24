@@ -60,7 +60,7 @@ class Directory extends Component {
                             {results.map(employee => (
                                 // what's the bes 'key' to use, and why?
                                 <tr key={employee.id.value}>
-                                    <td>{employee.picture.thumbnail}</td>
+                                    <td><img src={employee.picture.thumbnail} alt="" /></td>
                                     <td>{employee.name.first} {employee.name.last}</td>
                                     <td>{employee.phone}</td>
                                     <td>{employee.email}</td>
